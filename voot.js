@@ -1,12 +1,17 @@
 $(document).ready(function () {
-    var apiRoot = 'http://localhost/phpvoot';
-    var apiScopes = ["read", "oauth_userinfo"];
     var apiClientId = 'voot';
+    var redirectUri = "http://localhost/html-voot-client/index.html";
+
+    var apiScopes = ["read", "oauth_userinfo"];
+
+    var apiRoot = 'http://localhost/php-voot';
+    var oauthRoot = 'http://localhost/php-oauth';
+
     jso_configure({
         "voot": {
             client_id: apiClientId,
-            redirect_uri: "http://localhost/html-voot-client/index.html",
-            authorization: apiRoot + "/oauth/authorize"
+            redirect_uri: redirectUri,
+            authorization: oauthRoot + "/oauth/authorize"
         }
     });
     jso_ensureTokens({
@@ -42,7 +47,7 @@ $(document).ready(function () {
 
     function getResourceOwner() {
         $.oajax({
-            url: apiRoot + "/oauth/userinfo",
+            url: oauthRoot + "/oauth/userinfo",
             jso_provider: "voot",
             jso_scopes: apiScopes,
             jso_allowia: true,
