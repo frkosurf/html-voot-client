@@ -73,7 +73,11 @@
 
     <script id="memberListTemplate" type="text/x-jsrender">
         <tr>
+		{{if displayName}}
+                    <td><span title="{{:id}}">{{:displayName}}</span></td><td>{{:voot_membership_role}}</td>
+		{{else}}
 		    <td>{{:id}}</td><td>{{:voot_membership_role}}</td>
+		{{/if}}
         </tr>
     </script>
 
