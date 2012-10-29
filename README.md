@@ -13,7 +13,7 @@ This application depends on the following components:
 * jQuery
 * JSrender (JavaScript Template Rendering for jQuery)
 * JSO (JavaScript OAuth 2 client)
-* Bootstrap JS/CSS
+* Bootstrap CSS 
 
 It can easily be installed by running the following script:
 
@@ -23,18 +23,21 @@ This will download the latest version of those components and everything will
 immediately work.
 
 ## Configuration
+You need to configure the application to point to your OAuth server. This can
+be done by copying `config/config.js.default` to `config/config.js` and 
+modifying the `config.js` file to suit your situation.
 
-You may need to modify both `authorizeEndpoint` and `apiEndpoint` in 
-`js/voot.js` when your OAuth server is not configured at 
-`http://localhost/php-oauth`. So you need to change the following lines:
+This is the default configuration:
 
+    var apiClientId = 'html-voot-client';
     var authorizeEndpoint = 'http://localhost/php-oauth/authorize.php';
-    var apiEndpoint = 'http://localhost/php-oauth/api.php';
+    var apiEndpoint = 'http://localhost/php-voot-proxy/api.php';
 
-To for example:
+For example, for your situation it may need to be this:
 
+    var apiClientId = 'html-voot-client';
     var authorizeEndpoint = 'https://www.example.org/php-oauth/authorize.php';
-    var apiEndpoint = 'https://www.example.org/php-oauth/api.php';
+    var apiEndpoint = 'https://www.example.org/php-voot-proxy/api.php';
 
 ## Client Registration
 Also, make sure that this client is registered in your OAuth server. The following
@@ -42,13 +45,13 @@ information will be relevant:
 
 <table>
   <tr>
-    <th>Identifier</th><td>voot_client</td>
+    <th>Identifier</th><td>html-voot-client</td>
   </tr>
   <tr>
-    <th>Name</th><td>VOOT Demo Client</td>
+    <th>Name</th><td>View Your Group Membership</td>
   </tr>
   <tr>
-    <th>Description</th><td>This application makes it possible to view VOOT group membership information.</td>
+    <th>Description</th><td>Application to view your group membership and other members of your groups.</td>
   </tr>
   <tr>
     <th>Profile</th><td>User-agent-based Application</td>

@@ -1,25 +1,20 @@
 $(document).ready(function () {
 
-    var apiClientId = 'voot_client';
     var apiScope = ["read"];
 
-    var authorizeEndpoint = 'http://localhost/php-oauth/authorize.php';
-    var apiEndpoint = 'http://localhost/php-voot/api.php';
-
     jso_configure({
-        "voot_client": {
+        "html-voot-client": {
             client_id: apiClientId,
             authorization: authorizeEndpoint
         }
     });
     jso_ensureTokens({
-        "voot_client": apiScope
+        "html-voot-client": apiScope
     });
-
     function renderGroupList() {
         $.oajax({
             url: apiEndpoint + "/groups/@me",
-            jso_provider: "voot_client",
+            jso_provider: "html-voot-client",
             jso_scopes: apiScope,
             jso_allowia: true,
             dataType: 'json',
@@ -33,7 +28,7 @@ $(document).ready(function () {
     function getGroupMembers(groupId) {
         $.oajax({
             url: apiEndpoint + "/people/@me/" + groupId,
-            jso_provider: "voot_client",
+            jso_provider: "html-voot-client",
             jso_scopes: apiScope,
             jso_allowia: true,
             dataType: 'json',

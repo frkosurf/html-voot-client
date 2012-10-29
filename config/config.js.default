@@ -1,0 +1,4 @@
+var apiClientId       = 'html-voot-client';
+var authorizeEndpoint = 'http://localhost/php-oauth/authorize.php';
+var tokenInfoEndpoint = 'http://localhost/php-oauth/tokeninfo.php';
+var apiEndpoint       = 'http://localhost/php-voot-proxy/api.php';
