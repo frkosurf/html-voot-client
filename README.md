@@ -31,13 +31,13 @@ This is the default configuration:
 
     var apiClientId = 'html-voot-client';
     var authorizeEndpoint = 'http://localhost/php-oauth/authorize.php';
-    var apiEndpoint = 'http://localhost/php-voot-proxy/api.php';
+    var apiEndpoint = 'http://localhost/php-voot-proxy/voot.php';
 
 For example, for your situation it may need to be this:
 
     var apiClientId = 'html-voot-client';
     var authorizeEndpoint = 'https://www.example.org/php-oauth/authorize.php';
-    var apiEndpoint = 'https://www.example.org/php-voot-proxy/api.php';
+    var apiEndpoint = 'https://www.example.org/php-voot-proxy/voot.php';
 
 ## Client Registration
 Also, make sure that this client is registered in your OAuth server. The following
