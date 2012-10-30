@@ -12,9 +12,10 @@ $(document).ready(function () {
         "html-voot-client": apiScope
     });
 
-    function renderGroupList(pageNumber) {
+
+    function renderGroupList(startIndex) {
         $.oajax({
-            url: apiEndpoint + "/groups/@me?startIndex=" + pageNumber + "&count=" + maxPageLength,
+            url: apiEndpoint + "/groups/@me?startIndex=" + startIndex + "&count=" + maxPageLength,
             jso_provider: "html-voot-client",
             jso_scopes: apiScope,
             jso_allowia: true,
@@ -23,9 +24,9 @@ $(document).ready(function () {
                 $("#groupListTable").html($("#groupListTemplate").render(data));
                 if(data.totalResults > maxPageLength) {
                     // show pagination stuff
-                    var d = { numberList: [] };
+                    var d = {numberList: []};
                     for(var i = 0; i < Math.ceil(data.totalResults / maxPageLength); i++) {
-                        d.numberList.push({'pageNumber': i});
+                        d.numberList.push({'pageNumber': i, activePage: Math.ceil(startIndex / maxPageLength)});
                     }
                     $("#groupListPagination").html($("#paginationTemplate").render(d));
                 }
@@ -33,9 +34,9 @@ $(document).ready(function () {
         });
     }
 
-    function renderMemberList(groupId, pageNumber) {
+    function renderMemberList(groupId, startIndex) {
         $.oajax({
-            url: apiEndpoint + "/people/@me/" + groupId + "?startIndex=" + pageNumber + "&count=" + maxPageLength,
+            url: apiEndpoint + "/people/@me/" + groupId + "?startIndex=" + startIndex + "&count=" + maxPageLength,
             jso_provider: "html-voot-client",
             jso_scopes: apiScope,
             jso_allowia: true,
@@ -44,9 +45,9 @@ $(document).ready(function () {
                 $("#memberListTable").html($("#memberListTemplate").render(data));
                 if(data.totalResults > maxPageLength) {
                     // show pagination stuff
-                    var d = { numberList: [] };
+                    var d = {numberList: []};
                     for(var i = 0; i < Math.ceil(data.totalResults / maxPageLength); i++) {
-                        d.numberList.push({'pageNumber': i, 'groupId': groupId});
+                        d.numberList.push({'pageNumber': i, 'groupId': groupId, activePage: Math.ceil(startIndex / maxPageLength)});
                     }
                     $("#memberListPagination").html($("#paginationTemplate").render(d));
                 } else {

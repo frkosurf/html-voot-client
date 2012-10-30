@@ -87,7 +87,13 @@
         <div class="pagination pagination-mini pagination-centered">
             <ul>
                 {{for numberList}}
-                    <li><a href="#" data-group-id="{{>groupId}}" data-page-number="{{>pageNumber}}">{{>pageNumber+1}}</a></li>
+                    {{if activePage === pageNumber}}
+                        <li class="disabled">
+                    {{else}}
+                        <li>
+                    {{/if}}
+                        <a href="#" data-group-id="{{>groupId}}" data-page-number="{{>pageNumber}}">{{>pageNumber+1}}</a>
+                    </li>
                 {{/for}}
             </ul>
         </div>
