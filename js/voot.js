@@ -53,7 +53,6 @@ $(document).ready(function () {
                     $("#peoplePaginationList").html($("#paginationEntry").render(pages));
                     addPeoplePaginationHandlers(groupId);
                 }
-                addGroupListHandlers();
             }
         });
     }
