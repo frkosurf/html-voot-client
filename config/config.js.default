@@ -1,3 +1,6 @@
+// specify the maximum number of items per page
+var maxPageLength     = 10;
+
 var apiClientId       = 'html-voot-client';
 var authorizeEndpoint = 'http://localhost/php-oauth/authorize.php';
 var apiEndpoint       = 'http://localhost/php-voot-proxy/voot.php';
