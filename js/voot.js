@@ -20,22 +20,20 @@ $(document).ready(function () {
             jso_allowia: true,
             dataType: 'json',
             success: function (data) {
-                $("#groupList").html($("#groupListTemplate").render(data.entry));
+                $("#groupListTable").html($("#groupListTemplate").render(data));
                 if(data.totalResults > maxPageLength) {
                     // show pagination stuff
-                    var pages = [];
+                    var d = { numberList: [] };
                     for(var i = 0; i < Math.ceil(data.totalResults / maxPageLength); i++) {
-                        pages.push({'pageNumber': i});
+                        d.numberList.push({'pageNumber': i});
                     }
-                    $("#groupPaginationList").html($("#paginationEntry").render(pages));
-                    addGroupPaginationHandlers();
+                    $("#groupListPagination").html($("#paginationTemplate").render(d));
                 }
-                addGroupListHandlers();
             }
         });
     }
 
-    function renderPeopleList(groupId, pageNumber) {
+    function renderMemberList(groupId, pageNumber) {
         $.oajax({
             url: apiEndpoint + "/people/@me/" + groupId + "?startIndex=" + pageNumber + "&count=" + maxPageLength,
             jso_provider: "html-voot-client",
@@ -43,40 +41,35 @@ $(document).ready(function () {
             jso_allowia: true,
             dataType: 'json',
             success: function (data) {
-                $("#memberList").html($("#memberListTemplate").render(data.entry));
+                $("#memberListTable").html($("#memberListTemplate").render(data));
                 if(data.totalResults > maxPageLength) {
                     // show pagination stuff
-                    var pages = [];
+                    var d = { numberList: [] };
                     for(var i = 0; i < Math.ceil(data.totalResults / maxPageLength); i++) {
-                        pages.push({'pageNumber': i});
+                        d.numberList.push({'pageNumber': i, 'groupId': groupId});
                     }
-                    $("#peoplePaginationList").html($("#paginationEntry").render(pages));
-                    addPeoplePaginationHandlers(groupId);
+                    $("#memberListPagination").html($("#paginationTemplate").render(d));
+                } else {
+                    $("#memberListPagination").empty();
                 }
+                $("#memberListModal").modal('show');
             }
         });
     }
 
-    function addGroupListHandlers() {
-        $("a.groupEntry").click(function () {
-            renderPeopleList($(this).data('groupId'), 0);
-        });
-    }
+    $(document).on('click', '#groupListTable a', function() {
+        renderMemberList($(this).data('groupId'), 0);
+    });
 
-    function addGroupPaginationHandlers() {
-        $("a.pageEntry").click(function () {
-            renderGroupList($(this).data('pageNumber')*maxPageLength);
-        });
-    }
+    $(document).on('click', '#groupListPagination a', function() {
+        renderGroupList($(this).data('pageNumber')*maxPageLength);
+    });
 
-    function addPeoplePaginationHandlers(groupId) {
-        $("a.pageEntry").click(function () {
-            renderPeopleList(groupId, $(this).data('pageNumber')*maxPageLength);
-        });
-    }
+    $(document).on('click', '#memberListPagination a', function() {
+        renderMemberList($(this).data('groupId'), $(this).data('pageNumber')*maxPageLength);
+    });
 
     function initPage() {
-        $("#memberListModal").hide();
         renderGroupList(0);
     }
     initPage();
