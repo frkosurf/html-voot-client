@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
-    var pageLimit = 10
-;
+    var pageLimit = 10;
     var apiScope = ["read"];
 
     jso_configure({
