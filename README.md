@@ -1,13 +1,14 @@
 # VOOT Demo Client
 
 ## Introduction
-
-This application makes it possible to view VOOT group membership information.
+This application makes it possible to view group membership information, both
+the groups you are a member of and the members of a group (if available).
 
 ![html-voot-client](https://github.com/fkooman/html-voot-client/raw/master/docs/html-voot-client-screenshot.png)
 
-## Installation
+![html-voot-client](https://github.com/fkooman/html-voot-client/raw/master/docs/html-voot-client-screenshot-2.png)
 
+## Installation
 This application depends on the following components:
 
 * jQuery
