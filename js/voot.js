@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    var pageLimit = 10;
+    var pageLimit = 3;
     var apiScope = ["read"];
 
     jso_configure({
@@ -24,13 +24,11 @@ $(document).ready(function () {
                 $("#groupList").html($("#groupListTemplate").render(data.entry));
                 if(data.totalResults > pageLimit) {
                     // show pagination stuff
-                    var x = [];
-                    var extraPage = (data.totalResults % pageLimit === 0) ? 0 : 1;
-                    for(var i = 0; i < data.totalResults / pageLimit + extraPage; i++) {
-                        x.push({'pageNumber': i});
+                    var pages = [];
+                    for(var i = 0; i < Math.ceil(data.totalResults / pageLimit); i++) {
+                        pages.push({'pageNumber': i});
                     }
-                    //alert(JSON.stringify(x));
-                    $("#paginationList").html($("#paginationEntry").render(x));
+                    $("#paginationList").html($("#paginationEntry").render(pages));
                     addPaginationHandlers();
                 }
                 addGroupListHandlers();
