@@ -51,14 +51,17 @@
             {{for entry}}
                 <tr>
                     <td>
-                        <a href="#" data-group-id="{{>id}}" title="{{>description}} ({{>id}})">{{>title}}</a>
+                        <a href="#" data-group-id="{{>id}}" title="{{>id}}">{{>title}}</a>
+                        {{if description}}
+                            <small class="muted">{{>description}}</small>
+                        {{/if}}
                     </td>
                     <td>{{>voot_membership_role}}</td>
                 </tr>
             {{/for}}
             </tbody>
             <tfoot>
-                <tr><td colspan="2"><small>You are member of <em>{{>totalResults}}</em> groups.</small></td></tr>
+                <tr><td colspan="2"><small class="muted">You are member of <em>{{>totalResults}}</em> groups.</small></td></tr>
             </tfoot>
         </table>
     </script>
@@ -83,7 +86,7 @@
             {{/for}}
             </tbody>
             <tfoot>
-                <tr><td colspan="2"><small>This group has <em>{{>totalResults}}</em> members.</small></td></tr>
+                <tr><td colspan="2"><small class="muted">This group has <em>{{>totalResults}}</em> members.</small></td></tr>
             </tfoot>
         </table>
     </script>
