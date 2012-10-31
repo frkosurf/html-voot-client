@@ -15,7 +15,11 @@ $(document).ready(function () {
 
     function renderGroupList(startIndex) {
         $.oajax({
-            url: apiEndpoint + "/groups/@me?startIndex=" + startIndex + "&count=" + maxPageLength,
+            url: apiEndpoint + "/groups/@me" + 
+                "?startIndex=" + startIndex + 
+                "&count=" + maxPageLength + 
+                "&sortBy=title" + 
+                "&sortOrder=ascending",
             jso_provider: "html-voot-client",
             jso_scopes: apiScope,
             jso_allowia: true,
@@ -36,7 +40,11 @@ $(document).ready(function () {
 
     function renderMemberList(groupId, startIndex) {
         $.oajax({
-            url: apiEndpoint + "/people/@me/" + groupId + "?startIndex=" + startIndex + "&count=" + maxPageLength,
+            url: apiEndpoint + "/people/@me/" + groupId + 
+                "?startIndex=" + startIndex + 
+                "&count=" + maxPageLength +
+                "&sortBy=name" +
+                "&sortOrder=ascending",
             jso_provider: "html-voot-client",
             jso_scopes: apiScope,
             jso_allowia: true,
