@@ -43,7 +43,7 @@ $(document).ready(function () {
             url: apiEndpoint + "/people/@me/" + groupId + 
                 "?startIndex=" + startIndex + 
                 "&count=" + maxPageLength +
-                "&sortBy=name" +
+                "&sortBy=displayName" +
                 "&sortOrder=ascending",
             jso_provider: "html-voot-client",
             jso_scopes: apiScope,
