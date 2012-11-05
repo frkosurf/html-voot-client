@@ -61,7 +61,11 @@
             {{/for}}
             </tbody>
             <tfoot>
-                <tr><td colspan="2"><small class="muted">You are member of <em>{{>totalResults}}</em> groups.</small></td></tr>
+                <tr>
+                    <td colspan="2">
+                        <small class="muted">You are a member of <em>{{>totalResults}}</em> {{if totalResults === 1}}group{{else}}groups{{/if}}.</small>
+                    </td>
+                </tr>
             </tfoot>
         </table>
     </script>
@@ -86,7 +90,11 @@
             {{/for}}
             </tbody>
             <tfoot>
-                <tr><td colspan="2"><small class="muted">This group has <em>{{>totalResults}}</em> members.</small></td></tr>
+                <tr>
+                    <td colspan="2">
+                        <small class="muted">This group has <em>{{>totalResults}}</em> {{if totalResults === 1}}member{{else}}members{{/if}}.</small>
+                    </td>
+                </tr>
             </tfoot>
         </table>
     </script>
