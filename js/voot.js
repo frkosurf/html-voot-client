@@ -18,8 +18,7 @@ $(document).ready(function () {
             url: apiEndpoint + "/groups/@me" + 
                 "?startIndex=" + startIndex + 
                 "&count=" + maxPageLength + 
-                "&sortBy=title" + 
-                "&sortOrder=ascending",
+                "&sortBy=title",
             jso_provider: "html-voot-client",
             jso_scopes: apiScope,
             jso_allowia: true,
@@ -43,8 +42,7 @@ $(document).ready(function () {
             url: apiEndpoint + "/people/@me/" + groupId + 
                 "?startIndex=" + startIndex + 
                 "&count=" + maxPageLength +
-                "&sortBy=displayName" +
-                "&sortOrder=ascending",
+                "&sortBy=displayName",
             jso_provider: "html-voot-client",
             jso_scopes: apiScope,
             jso_allowia: true,
