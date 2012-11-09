@@ -1,5 +1,5 @@
 // specify the maximum number of items per page
-var maxPageLength     = 10;
+var maxPageLength     = 5;
 
 var apiClientId       = 'html-voot-client';
 var authorizeEndpoint = 'http://localhost/php-oauth/authorize.php';
