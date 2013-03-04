@@ -6,6 +6,9 @@
     <link href="ext/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="ext/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <style>
+        ul.emails { margin: 0; list-style: none; }
+    </style>
 </head>
 
 <body>
@@ -86,8 +89,12 @@
            		        {{else}}
                             <span>{{>id}}</span>
                         {{/if}}
-                        {{if mail}}
-                            <small class="muted"><a href="mailto:{{>mail}}">{{>mail}}</a></small>
+                        {{if emails}}
+                            <ul class="emails">
+                            {{for emails}}
+                                <li><small class="muted"><a href="mailto:{{>value}}">{{>value}}</a> ({{>type}})</small></li>
+                            {{/for}}
+                            </ul>
                         {{/if}}
                     </td>
                     <td>{{>voot_membership_role}}</td>
