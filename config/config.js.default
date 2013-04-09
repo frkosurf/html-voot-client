@@ -4,7 +4,12 @@ var maxPageLength     = 5;
 var apiClientId       = 'html-voot-client';
 var authorizeEndpoint = 'http://localhost/php-oauth/authorize.php';
 var apiEndpoint       = 'http://localhost/php-voot-proxy/voot.php';
+var apiScope          = [
+    "http://openvoot.org/groups",
+    "http://openvoot.org/people"
+];
 
 // var apiClientId       = 'html-voot-client'
 // var authorizeEndpoint = 'https://api.surfconext.nl/v1/oauth2/authorize';
 // var apiEndpoint       = 'https://api.surfconext.nl/v1/social/rest';
+// var apiScope          = ["read"];

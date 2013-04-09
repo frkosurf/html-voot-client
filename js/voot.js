@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-    var apiScope = ["read"];
-
     jso_configure({
         "html-voot-client": {
             client_id: apiClientId,
